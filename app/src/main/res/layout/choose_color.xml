@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:layout_width="336dp">
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/calendarName"
+        android:textAppearance="@android:style/TextAppearance.Large"
+        android:textAlignment="center" />
+
+    <TextView
+        android:text="@string/ui_step1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:textAlignment="center" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:srcCompat="@android:color/black"
+            android:id="@+id/colorSetBlack"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:srcCompat="@android:color/white"
+            android:id="@+id/colorSetWhite"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:srcCompat="@color/materialRed500"
+            android:id="@+id/colorSetRed"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:srcCompat="@color/materialPink500"
+            android:id="@+id/colorSetPink"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:srcCompat="@color/materialPurple500"
+            android:id="@+id/colorSetPurple"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:srcCompat="@color/materialDeepPurple500"
+            android:id="@+id/colorSetDeepPurple"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:srcCompat="@color/materialIndigo500"
+            android:id="@+id/colorSetIndigo"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:srcCompat="@color/materialBlue500"
+            android:id="@+id/colorSetBlue"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:srcCompat="@color/materialLightBlue500"
+            android:id="@+id/colorSetLightBlue"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:srcCompat="@color/materialCyan500"
+            android:id="@+id/colorSetCyan"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:srcCompat="@color/materialTeal500"
+            android:id="@+id/colorSetTeal"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:srcCompat="@color/materialGreen500"
+            android:id="@+id/colorSetGreen"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:srcCompat="@color/materialLightGreen500"
+            android:id="@+id/colorSetLightGreen"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:srcCompat="@color/materialLime500"
+            android:id="@+id/colorSetLime"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:srcCompat="@color/materialYellow500"
+            android:id="@+id/colorSetYellow"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:srcCompat="@color/materialAmber500"
+            android:id="@+id/colorSetAmber"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:srcCompat="@color/materialOrange500"
+            android:id="@+id/colorSetOrange"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:srcCompat="@color/materialDeepOrange500"
+            android:id="@+id/colorSetDeepOrange"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:srcCompat="@color/materialBrown500"
+            android:id="@+id/colorSetBrown"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:srcCompat="@color/materialGrey500"
+            android:id="@+id/colorSetGrey"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:srcCompat="@color/materialBlueGrey500"
+            android:id="@+id/colorSetBlueGrey"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <TextView
+        android:text="@string/ui_step2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:visibility="gone"
+        android:textAlignment="center" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:id="@+id/accentSet1">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:srcCompat="@color/materialRed500"
+            android:id="@+id/colorAccent500"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:srcCompat="@color/materialRed50"
+            android:id="@+id/colorAccent50"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:srcCompat="@color/materialRed100"
+            android:id="@+id/colorAccent100"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:srcCompat="@color/materialRed200"
+            android:id="@+id/colorAccent200"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:srcCompat="@color/materialRed300"
+            android:id="@+id/colorAccent300"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:srcCompat="@color/materialRed400"
+            android:id="@+id/colorAccent400"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:srcCompat="@color/materialRed600"
+            android:id="@+id/colorAccent600"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:id="@+id/accentSet2">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:srcCompat="@color/materialRed700"
+            android:id="@+id/colorAccent700"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:srcCompat="@color/materialRed800"
+            android:id="@+id/colorAccent800"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:srcCompat="@color/materialRed900"
+            android:id="@+id/colorAccent900"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:srcCompat="@color/materialRedA100"
+            android:id="@+id/colorAccentA100"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:srcCompat="@color/materialRedA200"
+            android:id="@+id/colorAccentA200"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:srcCompat="@color/materialRedA400"
+            android:id="@+id/colorAccentA400"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:srcCompat="@color/materialRedA700"
+            android:id="@+id/colorAccentA700"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+</LinearLayout>

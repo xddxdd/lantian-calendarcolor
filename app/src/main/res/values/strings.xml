@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">LT CalendarColor</string>
+    <string name="ui_step1">1. Choose a Color Set:</string>
+    <string name="ui_step2">2. Choose a Color Accent:</string>
+</resources>

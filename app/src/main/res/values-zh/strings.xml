@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">LT 日历调色</string>
+    <string name="ui_step1">1. 选择主色调：</string>
+    <string name="ui_step2">2. 选择颜色深浅：</string>
+</resources>
