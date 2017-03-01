@@ -6,33 +6,89 @@ import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.LightingColorFilter;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.provider.CalendarContract;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
     int REQUEST_CALENDAR_PERMISSION = 1;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.READ_CALENDAR)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{
+                            Manifest.permission.READ_CALENDAR,
+                            Manifest.permission.WRITE_CALENDAR
+                    }, REQUEST_CALENDAR_PERMISSION);
+        } else {
+            showCalendars();
+        }
+    }
+
+    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+        if (requestCode == REQUEST_CALENDAR_PERMISSION) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                showCalendars();
+            } else {
+                this.finish();
+            }
+        }
+    }
+
+    void showCalendars() {
+        ArrayList<CalendarEntry> calendarEntries = new ArrayList<>();
+
+        String[] columns = new String[]{
+                CalendarContract.Calendars._ID,
+                CalendarContract.Calendars.CALENDAR_DISPLAY_NAME,
+                CalendarContract.Calendars.CALENDAR_COLOR
+        };
+        try {
+            Cursor cursor = getContentResolver().query(
+                    CalendarContract.Calendars.CONTENT_URI,
+                    columns,
+                    null, null, null);
+            if (cursor != null && cursor.moveToFirst()) {
+                int col_id = cursor.getColumnIndex(columns[0]);
+                int col_name = cursor.getColumnIndex(columns[1]);
+                int col_color = cursor.getColumnIndex(columns[2]);
+
+                do {
+                    calendarEntries.add(new CalendarEntry(
+                            cursor.getString(col_id),
+                            cursor.getString(col_name),
+                            cursor.getString(col_color)));
+                } while (cursor.moveToNext());
+                cursor.close();
+            }
+        } catch (SecurityException se) {
+            MainActivity.this.finish();
+        }
+        ListView lv = (ListView) findViewById(R.id.calendarList);
+        lv.setAdapter(new CalendarAdapter(this, calendarEntries));
+    }
 
     class CalendarEntry {
         String id;
@@ -56,7 +112,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        public View getView(final int position, View view, ViewGroup parent) {
+        @SuppressWarnings("ConstantConditions")
+        public
+        @NonNull
+        View getView(final int position, View view, @NonNull ViewGroup parent) {
             CalendarEntry entry = getItem(position);
             if (view == null) {
                 view = LayoutInflater.from(getContext()).inflate(R.layout.entry_calendar, parent, false);
@@ -70,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
                     Color.parseColor(String.format("#%06X", (0xFFFFFF & Integer.valueOf(entry.color))))
             ));
             tv.setOnClickListener(new View.OnClickListener() {
+                @SuppressWarnings("ConstantConditions")
                 @Override
                 public void onClick(View v) {
                     Dialog dialog = new Dialog(getContext());
@@ -437,6 +497,7 @@ public class MainActivity extends AppCompatActivity {
                     ImageView iv = (ImageView) dialog.findViewById(colorAccentViewID);
                     iv.setImageResource(colorAccentID);
                     iv.setOnClickListener(new View.OnClickListener() {
+                        @SuppressWarnings({"deprecation", "ConstantConditions"})
                         @Override
                         public void onClick(View v) {
                             CalendarEntry cal = getItem(position);
@@ -462,65 +523,5 @@ public class MainActivity extends AppCompatActivity {
             });
             return view;
         }
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.READ_CALENDAR)
-                != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this,
-                    new String[]{
-                            Manifest.permission.READ_CALENDAR,
-                            Manifest.permission.WRITE_CALENDAR
-                    }, REQUEST_CALENDAR_PERMISSION);
-        } else {
-            showCalendars();
-        }
-    }
-
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        if (requestCode == REQUEST_CALENDAR_PERMISSION) {
-            if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                showCalendars();
-            } else {
-                this.finish();
-            }
-        }
-    }
-
-    void showCalendars() {
-        ArrayList<CalendarEntry> calendarEntries = new ArrayList<>();
-
-        String[] columns = new String[]{
-                CalendarContract.Calendars._ID,
-                CalendarContract.Calendars.CALENDAR_DISPLAY_NAME,
-                CalendarContract.Calendars.CALENDAR_COLOR
-        };
-        try {
-            Cursor cursor = getContentResolver().query(
-                    CalendarContract.Calendars.CONTENT_URI,
-                    columns,
-                    null, null, null);
-            if (cursor.moveToFirst()) {
-                int col_id = cursor.getColumnIndex(columns[0]);
-                int col_name = cursor.getColumnIndex(columns[1]);
-                int col_color = cursor.getColumnIndex(columns[2]);
-
-                do {
-                    calendarEntries.add(new CalendarEntry(
-                            cursor.getString(col_id),
-                            cursor.getString(col_name),
-                            cursor.getString(col_color)));
-                } while (cursor.moveToNext());
-            }
-            cursor.close();
-        } catch(SecurityException se) {
-            MainActivity.this.finish();
-        }
-        ListView lv = (ListView) findViewById(R.id.calendarList);
-        lv.setAdapter(new CalendarAdapter(this, calendarEntries));
     }
 }
